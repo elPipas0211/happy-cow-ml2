@@ -1,0 +1,30 @@
+# ── Scripts de prueba / scratch ──────────────────────────────
+_apptest.py
+_inspect.py
+_verify.py
+_nbdump.py
+_pftest.py
+_st.log
+_st.err
+
+# ── Caso HBS — derechos de autor, no publicar ────────────────
+HK1207-PDF-ENG.pdf
+
+# ── Python ───────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# ── Streamlit ────────────────────────────────────────────────
+.streamlit/secrets.toml
+
+# ── Entorno / herramientas ───────────────────────────────────
+.claude/
+.vscode/
+
+# ── Sistema operativo ────────────────────────────────────────
+.DS_Store
+Thumbs.db
