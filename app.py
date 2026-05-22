@@ -932,16 +932,12 @@ def tab_modelo(data):
     fechas = sorted(ranking["fecha"].dt.date.unique())
     cs = st.columns([1, 2])
     with cs[0]:
-        fsel = st.date_input("Selecciona una fecha de evaluación",
-                             value=fechas[0], min_value=fechas[0],
-                             max_value=fechas[-1], key="modfecha")
-    if fsel not in fechas:
-        st.warning(f"El {fsel} no pertenece al conjunto de prueba. "
-                   f"Fechas disponibles: {fechas[0]} – {fechas[-1]} "
-                   f"({len(fechas)} días evaluados).")
-        nearest = min(fechas, key=lambda d: abs((d - fsel).days))
-        st.info(f"Mostrando la fecha más cercana disponible: **{nearest}**")
-        fsel = nearest
+        fsel = st.selectbox(
+            "Selecciona una fecha de evaluación",
+            options=fechas,
+            format_func=lambda d: pd.Timestamp(d).strftime("%d/%m/%Y"),
+            key="modfecha",
+        )
     dia = ranking[ranking["fecha"].dt.date == fsel].sort_values(
         "prob_top_seller", ascending=False).head(5)
     ctx = dia.iloc[0]
